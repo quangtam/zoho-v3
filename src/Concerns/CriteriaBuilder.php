@@ -80,7 +80,7 @@ trait CriteriaBuilder
         return $this;
     }
 
-    public function get(): array
+    public function get(): object
     {
         return $this->searchRecordsByCriteria($this->getCriteria());
     }

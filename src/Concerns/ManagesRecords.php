@@ -40,11 +40,11 @@ trait ManagesRecords
 
     public function searchRecordsByCriteria(
         string $criteria,
-        $page = 1,
-        $perPage = 200,
-        $sortBy = 'id',
-        $sortOrder = 'desc'
-    ): array {
+               $page = 1,
+               $perPage = 200,
+               $sortBy = 'id',
+               $sortOrder = 'desc'
+    ): object {
         $recordOperations = new RecordOperations($this->module_api_name);
         $paramInstance = new ParameterMap();
 
@@ -61,10 +61,10 @@ trait ManagesRecords
 
     public function searchRecordsByWord(
         string $word,
-        $page = 1,
-        $perPage = 200,
-        $sortBy = 'id',
-        $sortOrder = 'desc'
+               $page = 1,
+               $perPage = 200,
+               $sortBy = 'id',
+               $sortOrder = 'desc'
     ): array {
         $recordOperations = new RecordOperations($this->module_api_name);
         $paramInstance = new ParameterMap();
@@ -82,10 +82,10 @@ trait ManagesRecords
 
     public function searchRecordsByPhone(
         string $phone,
-        $page = 1,
-        $perPage = 200,
-        $sortBy = 'id',
-        $sortOrder = 'desc'
+               $page = 1,
+               $perPage = 200,
+               $sortBy = 'id',
+               $sortOrder = 'desc'
     ): array {
         $recordOperations = new RecordOperations($this->module_api_name);
         $paramInstance = new ParameterMap();
@@ -103,10 +103,10 @@ trait ManagesRecords
 
     public function searchRecordsByEmail(
         string $email,
-        $page = 1,
-        $perPage = 200,
-        $sortBy = 'id',
-        $sortOrder = 'desc'
+               $page = 1,
+               $perPage = 200,
+               $sortBy = 'id',
+               $sortOrder = 'desc'
     ): array {
         $recordOperations = new RecordOperations($this->module_api_name);
         $paramInstance = new ParameterMap();
@@ -122,7 +122,7 @@ trait ManagesRecords
         );
     }
 
-    private function handleRecordResponse($response): array
+    private function handleRecordResponse($response): object
     {
         if ($response != null) {
             if (in_array($response->getStatusCode(), array(204, 304))) {
@@ -135,7 +135,7 @@ trait ManagesRecords
                 $responseHandler = $response->getObject();
 
                 if ($responseHandler instanceof RecordResponseWrapper) {
-                    return $responseHandler->getData();
+                    return $responseHandler;
                 } elseif ($responseHandler instanceof APIException) {
                     logger()->error($responseHandler->getMessage());
                 }
