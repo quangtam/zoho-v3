@@ -22,7 +22,7 @@ trait ManagesRecords
     /**
      * get the records array of given module api name
      */
-    public function getRecords(array $fields = ['id'], $page = 1, $perPage = 200, $sortBy = 'id', $sortOrder = 'desc'): array
+    public function getRecords(array $fields = ['id'], $page = 1, $perPage = 200, $sortBy = 'id', $sortOrder = 'desc'): object
     {
         $recordOperations = new RecordOperations($this->module_api_name);
         $paramInstance = new ParameterMap();
@@ -65,7 +65,7 @@ trait ManagesRecords
                $perPage = 200,
                $sortBy = 'id',
                $sortOrder = 'desc'
-    ): array {
+    ): object {
         $recordOperations = new RecordOperations($this->module_api_name);
         $paramInstance = new ParameterMap();
 
@@ -86,7 +86,7 @@ trait ManagesRecords
                $perPage = 200,
                $sortBy = 'id',
                $sortOrder = 'desc'
-    ): array {
+    ): object {
         $recordOperations = new RecordOperations($this->module_api_name);
         $paramInstance = new ParameterMap();
 
@@ -107,7 +107,7 @@ trait ManagesRecords
                $perPage = 200,
                $sortBy = 'id',
                $sortOrder = 'desc'
-    ): array {
+    ): object {
         $recordOperations = new RecordOperations($this->module_api_name);
         $paramInstance = new ParameterMap();
 
