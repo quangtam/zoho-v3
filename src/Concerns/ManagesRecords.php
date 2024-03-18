@@ -127,8 +127,7 @@ trait ManagesRecords
         if ($response != null) {
             if (in_array($response->getStatusCode(), array(204, 304))) {
                 logger()->error($response->getStatusCode() == 204 ? "No Content" : "Not Modified");
-                $responseObj = new \stdClass();
-                $responseObj->message = $response->getStatusCode() == 204 ? "No Content" : "Not Modified";
+                $responseObj = new RecordResponseWrapper();
                 return $responseObj;
             }
 
@@ -143,8 +142,7 @@ trait ManagesRecords
             }
         }
 
-        $responseObj = new \stdClass();
-        $responseObj->message = $responseHandler->getMessage();
+        $responseObj = new RecordResponseWrapper();
         return $responseObj;
     }
 }
