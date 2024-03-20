@@ -2,6 +2,8 @@
 
 namespace Asciisd\Zoho\Concerns;
 
+use com\zoho\crm\api\coql\BodyWrapper;
+use com\zoho\crm\api\coql\CoqlOperations;
 use com\zoho\crm\api\modules\APIException;
 use com\zoho\crm\api\ParameterMap;
 use com\zoho\crm\api\record\GetRecordsParam;
@@ -119,6 +121,17 @@ trait ManagesRecords
 
         return $this->handleRecordResponse(
             $recordOperations->searchRecords($paramInstance)
+        );
+    }
+
+    public function searchByQuery(string $query)
+    {
+        $coql = new CoqlOperations();
+
+        $body = new BodyWrapper();
+        $body->setSelectQuery($query);
+        return $this->handleRecordResponse(
+            $coql->getRecords($body)
         );
     }
 
