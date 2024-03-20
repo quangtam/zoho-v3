@@ -74,7 +74,9 @@ class Zoho
      */
     public static function initialize($code = null): void
     {
-        //dump('initializing...');
+        if (self::isInitialized()) {
+            return;
+        }
 
         $environment = self::$environment ?: self::getDataCenterEnvironment();
         $resourcePath = config('zoho.resourcePath');
@@ -129,6 +131,11 @@ class Zoho
             ->resourcePath($resourcePath)
             ->logger($logger)
             ->initialize();
+    }
+
+    public static function isInitialized(): bool
+    {
+        return \com\zoho\crm\api\Initializer::getInitializer() !== null;
     }
 
     public static function getDataCenterEnvironment(): ?Environment
