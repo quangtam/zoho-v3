@@ -4,6 +4,7 @@ namespace Asciisd\Zoho\Concerns;
 
 use com\zoho\crm\api\coql\BodyWrapper;
 use com\zoho\crm\api\coql\CoqlOperations;
+use com\zoho\crm\api\coql\ResponseWrapper;
 use com\zoho\crm\api\modules\APIException;
 use com\zoho\crm\api\ParameterMap;
 use com\zoho\crm\api\record\GetRecordsParam;
@@ -147,7 +148,7 @@ trait ManagesRecords
             if ($response->isExpected()) {
                 $responseHandler = $response->getObject();
 
-                if ($responseHandler instanceof RecordResponseWrapper) {
+                if ($responseHandler instanceof RecordResponseWrapper || $responseHandler instanceof ResponseWrapper) {
                     return $responseHandler;
                 } elseif ($responseHandler instanceof APIException) {
                     logger()->error($responseHandler->getMessage());
