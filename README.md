@@ -25,6 +25,8 @@ your app:
 6. Select the created OAuth client.
 7. User this scope `aaaserver.profile.READ,ZohoCRM.modules.ALL,ZohoCRM.settings.ALL` when you create the grant token.
 
+## Zoho CRM API v6 Document
+[https://www.zoho.com/crm/developer/docs/api/v6/](https://www.zoho.com/crm/developer/docs/api/v6/)
 ## Installation
 
 You can install the package via `composer require`:
